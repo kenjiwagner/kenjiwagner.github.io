@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site, githubProfileUrl } from '../site.config';
+import { getProjects } from '../lib/projects';
+import { resume } from '../lib/resume';
+
+const projects = await getProjects();
+const featured = projects.filter((p) => p.featured).slice(0, 4);
+---
+<Base>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">{site.role}</p>
+      <h1>Hi, I'm {site.name.split(' ')[0]}.<br /><span>I turn data into decisions.</span></h1>
+      <p class="intro">{site.intro}</p>
+      <p class="loc mono"><Icon name="pin" size={14} /> {site.location}</p>
+      <div class="actions">
+        <a class="btn primary" href="/projects">View projects <Icon name="arrow" /></a>
+        <a class="btn" href={site.resumePdf} download><Icon name="download" /> Resume</a>
+        <a class="btn icon" href={githubProfileUrl} aria-label="GitHub"><Icon name="github" /></a>
+        <a class="btn icon" href={site.linkedin} aria-label="LinkedIn"><Icon name="linkedin" /></a>
+        <a class="btn icon" href={`mailto:${site.email}`} aria-label="Email"><Icon name="mail" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Featured projects</h2>
+        <a href="/projects" class="all">All projects ({projects.length}) →</a>
+      </div>
+      <div class="grid">
+        {featured.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <a href="/resume" class="all">Full resume →</a>
+      </div>
+      <ol class="timeline">
+        {resume.experience.map((job) => (
+          <li>
+            <div class="when mono">{job.period}</div>
+            <div>
+              <h3>{job.org}</h3>
+              <p class="roles">{job.roles.map((r) => r.title).join(' · ')}</p>
+              <p class="first">{job.bullets[0]}</p>
+            </div>
+          </li>
+        ))}
+        {resume.education.map((ed) => (
+          <li>
+            <div class="when mono">{ed.period}</div>
+            <div>
+              <h3>{ed.school}</h3>
+              <p class="roles">{ed.degree}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head"><h2>Toolkit</h2></div>
+      <div class="skills">
+        {Object.entries(resume.skills).map(([group, items]) => (
+          <div class="card skill-group">
+            <p class="eyebrow">{group}</p>
+            <div class="tags">{items.map((s) => <span class="chip">{s}</span>)}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 96px 0 56px; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 700; letter-spacing: -0.035em; }
+  h1 span { color: var(--muted); }
+  .intro { font-size: 1.15rem; color: var(--text-2); max-width: 600px; margin: 22px 0 14px; }
+  .loc { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.82rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .btn.icon { padding: 10px 12px; }
+
+  .all { font-size: 0.92rem; font-weight: 500; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+  .timeline li { position: relative; display: grid; grid-template-columns: 170px 1fr; gap: 20px; padding: 0 0 28px 24px; }
+  .timeline li::before {
+    content: ''; position: absolute; left: -5px; top: 7px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .when { color: var(--muted); font-size: 0.8rem; padding-top: 3px; }
+  .timeline h3 { font-size: 1.05rem; }
+  .roles { color: var(--accent); font-size: 0.92rem; font-weight: 500; margin: 2px 0 6px; }
+  .first { color: var(--text-2); font-size: 0.93rem; margin: 0; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+  .skill-group { padding: 20px; }
+  .chip { font-size: 0.84rem; padding: 4px 10px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text-2); }
+
+  @media (max-width: 640px) {
+    .hero { padding: 64px 0 32px; }
+    .timeline li { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

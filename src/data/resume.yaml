@@ -1,0 +1,63 @@
+# Source for the /resume page and the experience section on the home page.
+# Keep it in sync with public/Kenji_Wagner_Resume.pdf.
+
+experience:
+  - org: Tohoom LLC
+    location: Tampa, FL
+    period: Sep 2025 – Present
+    roles:
+      - title: AI Engineer
+        period: Sep 2026 – Present
+      - title: Data Analyst
+        period: Sep 2025 – Sep 2026
+    bullets:
+      - Owned end-to-end development of AI agents in Tohoom's Salesforce CIM product using Agentforce, Einstein, Apex, Agent Script, and Data Cloud, enabling users to query business data and interpret key figures.
+      - Independently built 300–400 CRM Analytics dashboards with SAQL and JSON for automotive supplier customers, used by sales teams and senior executives.
+      - Wrote custom SAQL and SQL queries and visualizations for sales presentations; designed proposed Lightning Web Component enhancements.
+      - Optimized Salesforce data recipes, resolving data-quality issues to improve integrity and reporting accuracy.
+
+  - org: GBH News (via BU Spark!)
+    location: Boston, MA
+    period: Sep 2024 – Dec 2024
+    roles:
+      - title: Lead Data Analyst / NLP Engineer
+    bullets:
+      - Led a student team collaborating with a GBH reporter to analyze 15,000+ debt collection cases from the MassCourts database; visualized key trends and players through an interactive Tableau dashboard and heat map.
+      - Architected an NLP and regex-based querying system to identify and standardize semantically similar debt collector names, improving case identification accuracy by 33% and uncovering 1,000+ new name variations.
+
+  - org: Boston University Faculty of Computing and Data Sciences
+    location: Boston, MA
+    period: Sep 2024 – Dec 2024
+    roles:
+      - title: Grader
+    bullets:
+      - Evaluated student work on relational (SQL) and NoSQL (MapReduce) paradigms, partnering with instructors to ensure accurate, consistent grading across database management, querying, and algorithm optimization.
+
+education:
+  - school: Boston University
+    degree: Master of Science in Data Science
+    location: Boston, MA
+    period: Sep 2024 – May 2025
+  - school: University of Michigan
+    degree: Bachelor of Science in Data Science, Minor in Asian Languages & Cultures
+    location: Ann Arbor, MI
+    period: Aug 2020 – May 2024
+
+leadership:
+  - org: Michigan Data Science Team
+    title: Project Lead
+    location: Ann Arbor, MI
+    period: Jan 2024 – May 2024
+    bullets:
+      - Directed development of a heads-up poker bot using deep reinforcement learning, designing a pseudo-siamese architecture and an adapted clipped PPO loss; taught the team core deep learning and RL concepts.
+  - org: Office of New Student Programs, University of Michigan
+    title: Orientation Leader
+    location: Ann Arbor, MI
+    period: Jun 2023 – Aug 2023
+    bullets:
+      - Facilitated orientation sessions for incoming students and families on academic programs, campus resources, student organizations, and support services.
+
+skills:
+  Languages: [Python, SQL, R, SAQL, Apex, Java, C++, JavaScript]
+  Tools & Platforms: [Salesforce (Agentforce, Data Cloud, CRM Analytics), Azure, Power BI, Tableau, Git, MongoDB]
+  Libraries: [NumPy, Pandas, Scikit-Learn, PyTorch, TensorFlow, XGBoost, OpenCV, NLTK, Matplotlib, Seaborn, ggplot2]
