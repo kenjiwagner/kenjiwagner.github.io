@@ -4,7 +4,8 @@ summary: A deep reinforcement learning poker agent with a pseudo-siamese archite
 tags: [Reinforcement Learning, Deep Learning, Python, Leadership]
 period: Jan 2024 – May 2024
 date: 2024-05-01
-featured: false
+featured: true
+repo: onatozer/Poker_bot_W24
 highlights:
   - Designed a pseudo-siamese network architecture
   - Adapted the clipped PPO loss for heads-up poker
