@@ -27,6 +27,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v4
+        with:
+          node-version: 24
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
