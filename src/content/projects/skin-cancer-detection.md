@@ -5,6 +5,7 @@ tags: [Deep Learning, PyTorch, TensorFlow, XGBoost, OpenCV]
 period: Oct 2024 – Dec 2024
 date: 2024-12-01
 featured: true
+repo: kenjiwagner/skin-cancer-detection
 highlights:
   - 92.99% accuracy and 0.8907 AUROC
   - Led the fusion design and evaluation
