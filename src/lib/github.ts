@@ -118,9 +118,12 @@ export async function getReadmeHtml(repo: Repo): Promise<string | null> {
   const blob = `${repo.url}/blob/${repo.defaultBranch}/`;
   const isRelative = (u: string) => !/^([a-z]+:|#|\/\/)/i.test(u);
   return html
-    .replace(/(<img[^>]+src=")([^"]+)"/g, (m, pre, src) =>
-      isRelative(src) ? `${pre}${raw}${src.replace(/^\.?\//, '')}"` : m,
-    )
+    .replace(/(<img[^>]+src=")([^"]+)"/g, (m, pre, src) => {
+      if (isRelative(src)) return `${pre}${raw}${src.replace(/^\.?\//, '')}"`;
+      // github.com/<owner>/<repo>/blob/<ref>/<path> is an HTML page, not an image.
+      const blobImg = src.match(/^https:\/\/github\.com\/([^/]+\/[^/]+)\/blob\/(.+)$/);
+      return blobImg ? `${pre}https://raw.githubusercontent.com/${blobImg[1]}/${blobImg[2]}"` : m;
+    })
     .replace(/(<a[^>]+href=")([^"]+)"/g, (m, pre, href) =>
       isRelative(href) ? `${pre}${blob}${href.replace(/^\.?\//, '')}"` : m,
     );

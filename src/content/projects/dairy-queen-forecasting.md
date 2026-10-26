@@ -5,8 +5,7 @@ tags: [Time Series, R, Forecasting, ggplot2]
 period: Apr 2025 – May 2025
 date: 2025-05-15
 featured: false
-# Once this repo is copied to kenjiwagner, uncomment to link it:
-# repo: kenjiwagner/dairyqueenseasonaltimeseriesproject
+repo: kenjiwagner/dairyqueenseasonaltimeseriesproject
 highlights:
   - Captured a strong summer peak and a long-term upward trend
   - Compared hand-tuned SARIMA, auto.arima, and Holt-Winters on a 2018–2019 holdout
